@@ -16,12 +16,12 @@
                     taintTest: false,
                     onrendered: function (canvas) {
                         canvas.id = "mycanvas";
-                        //document.body.appendChild(canvas);
-                        //生成base64图片数据
                         var dataUrl = canvas.toDataURL();
                         var newImg = document.createElement("img");
                         newImg.src = dataUrl;
-                        document.body.appendChild(newImg);
+                        // document.body.appendChild(newImg);
+                        $('.imgtu').html(newImg)
+                        
                     }
                 });
             });
@@ -39,7 +39,9 @@
     </div>
     <textArea id="textArea" col="20" rows="10"></textArea>
     <input class="example1" type="button" value="截图">
-    生成界面如下：
+    <div class="imgtu" style="width:1000px; height: 300px; border: 10px solid #000000; border-radius: 30px">
+    
+    </div>
 </body>
 
 </html>
