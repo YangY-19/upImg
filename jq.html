@@ -5,43 +5,40 @@
     <meta name="layout" content="main">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
-    <script type="text/javascript" src="./1.js"></script>
+    <script type="text/javascript" src="./html2canvas.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $(".example1").on("click", function (event) {
-                event.preventDefault();
-                html2canvas(document.body, {
-                    allowTaint: true,
-                    taintTest: false,
-                    onrendered: function (canvas) {
-                        canvas.id = "mycanvas";
-                        var dataUrl = canvas.toDataURL();
-                        var newImg = document.createElement("img");
-                        newImg.src = dataUrl;
-                        // document.body.appendChild(newImg);
-                        $('.imgtu').html(newImg)
-                        
-                    }
-                });
-            });
 
-        });
-
-    </script>
 </head>
+<style>
 
+</style>
 <body>
 
-    Hello!
-    <div class="" style="background-color: #abc;">
-        html5页面截图
-    </div>
-    <textArea id="textArea" col="20" rows="10"></textArea>
-    <input class="example1" type="button" value="截图">
-    <div class="imgtu" style="width:1000px; height: 300px; border: 10px solid #000000; border-radius: 30px">
-    
-    </div>
+  
+<div id="capture" style="padding: 10px; background: #f5da55">
+    <h4 style="color: #000; ">Hello world!</h4>
+</div>
+<div class="huoqu2" style="width:100%; height:100%; position:absolute; z-index: 1; display: none; "></div>
+<input type="button" value="获取" class="huoqu">
 </body>
+    <script type="text/javascript">
+    $('.huoqu').on('click', function () {
+            html2canvas(document.getElementById("capture"), {
+                allowTaint: true,
+                logging: true,
+                taintTest: false,
+                width: '100px',
+                X	: '100px'
+            }).then(canvas => {
+                console.log(canvas);
+                
+            $('.huoqu2').html(canvas).show()
+        });
+        });
+        // html2canvas(document.querySelector("#capture")).then(canvas => {
+        //     document.body.appendChild(canvas)
+        // });
+
+    </script>
 
 </html>
